@@ -1,73 +1,9 @@
-# church-management
+Project : SDA church membership
 
-
-- Members are struggling with the problem of registration
-- Members are struggling with the problem of shifting from one local church
-  to another one because transfers are done on hard papers and that papers 
-  needs to be taken to the church to another one. So we want to put it online
-- Registering a new member when he/she is baptised
-- Members are struggling with the proof that they are members when it is needed 
-  for some reasons like in government, marriage, at work, etc..,
-
-
-====================================================================================================================================
-
-Requirements for project:
-
-1. Member registration: The system should provide an online platform for members to register themselves, as well as for church administrators to manage 
-   member registration. This should include basic information such as full names,date of birth,name of the local church,place of baptism and telephone number.
-
-2. Transfer request: The system should allow members to request transfers from one local church to another online, and for church administrators to manage 
-   these requests. This should include the ability to track the status of transfer requests, and the transfer of membership records from one church to another.
-
-3. Baptism registration: The system should allow new members to register themselves online after they have been baptized. This should include information 
-   about the baptism date, location, and the name of the pastor who performed the baptism.
-
-4. Membership proof: The system should provide a way for members to easily access and download proof of their membership, such as a membership certificate 
-   or letter. This should be accessible online and should be easy to print or share.
-
-5. Access control: The system should implement appropriate access controls to ensure that only authorized users can access and manage member information. 
-   This should include the ability to set user roles and permissions, and to track user activity.
-
-6. Reporting: The system should provide reporting functionality to church administrators to help them track member registration, transfers, and other key 
-   metrics. This should include the ability to generate reports based on various criteria such as location, age, gender, and more.
-
-====================================================================================================================================
-
-
-Sure, here are some non-functional requirements you might consider for your SDA church member registration system:
-
-1. Security: The system should be secure to protect member information from unauthorized access, data breaches, or cyber attacks. You should consider using 
-   encryption, access controls, and other security measures to protect sensitive information.
-
-2. Usability: The system should be easy to use and navigate, with clear and intuitive interfaces. This will help members and administrators interact with 
-   the system more effectively and efficiently.
-
-3. Performance: The system should perform well and respond quickly to user requests, even during peak usage times. This will help ensure that members can 
-   register and request transfers in a timely manner, without experiencing delays or downtime.
-
-4. Scalability: The system should be scalable to accommodate the growing number of members and churches over time. This may require implementing 
-   a distributed system architecture or using cloud-based infrastructure to support high levels of traffic.
-
-5. Reliability: The system should be reliable and available, with minimal downtime or system failures. This will help ensure that members and 
-   administrators can access the system whenever they need it.
-
-6. Accessibility: The system should be accessible to all members, regardless of their abilities or disabilities. This may require implementing features 
-   such as screen readers, color contrast options, and keyboard navigation to accommodate members with different needs.
-
-These are just a few examples of non-functional requirements you might consider for your SDA church member registration system. As you continue to develop 
-your project, you may discover other non-functional requirements that are important to your users and stakeholders.
-
-
-=====================================================================================================================================
-
-
-
-
-
-
+1. Project Requirements
 
 Functional requirements
+=======================
 
 1. Member registration:
 - A member should be able to create an account on the system with their personal details (name, address, date of birth, contact details, gender, and marital status).
@@ -90,50 +26,238 @@ Functional requirements
 - The system should provide reports on member registration, transfer requests, and other key metrics.
 - Reports should be filterable and sortable by various criteria, such as location, age, gender, and more.
 
-Based on these requirements, here is a basic database schema that you can use as a starting point:
 
-**Table: member**
+non-functional requirements SDA church member registration system:
 
-| Column Name | Data Type | Description |
-| --- | --- | --- |
-| id | INT | Unique ID for each member |
-| first_name | VARCHAR(50) | Member's first name |
-| last_name | VARCHAR(50) | Member's last name |
-| address | VARCHAR(100) | Member's address |
-| date_of_birth | DATE | Member's date of birth |
-| contact_details | VARCHAR(100) | Member's contact details |
-| gender | ENUM('Male', 'Female', 'Other') | Member's gender |
-| marital_status | ENUM('Single', 'Married', 'Widowed', 'Divorced') | Member's marital status |
-| baptism_date | DATE | Date of the member's baptism |
-| baptism_location | VARCHAR(100) | Location of the member's baptism |
-| pastor_name | VARCHAR(100) | Name of the pastor who performed the member's baptism |
+1. Security: The system should be secure to protect member information from unauthorized access, data breaches, or cyber attacks. You should consider using 
+   encryption, access controls, and other security measures to protect sensitive information.
 
-**Table: transfer_request**
+2. Usability: The system should be easy to use and navigate, with clear and intuitive interfaces. This will help members and administrators interact with 
+   the system more effectively and efficiently.
 
-| Column Name | Data Type | Description |
-| --- | --- | --- |
-| id | INT | Unique ID for each transfer request |
-| member_id | INT | Foreign key to the member table |
-| destination_church | VARCHAR(100) | Name of the destination church |
-| status | ENUM('Pending', 'Approved', 'Rejected') | Status of the transfer request |
-| created_at | DATETIME | Timestamp for when the transfer request was created |
+3. Performance: The system should perform well and respond quickly to user requests, even during peak usage times. This will help ensure that members can 
+   register and request transfers in a timely manner, without experiencing delays or downtime.
 
-Class Diagram 
-============
+4. Scalability: The system should be scalable to accommodate the growing number of members and churches over time. This may require implementing 
+   a distributed system architecture or using cloud-based infrastructure to support high levels of traffic.
 
-  -------------     +---------------+      --------------
-  |    Member  |     |   LocalChurch |     |    Region   |
-  -------------       ---------------      --------------
-  | id         |     | id            |     | id          |
-  | first_name |     | name          |     | name        |
-  | last_name  |     | address       |     ---------------
-  | email      |     | region_id     |
-  | phone      |     +---------------+
-  | status     |
-  | created_at |
-  +------------+
+5. Reliability: The system should be reliable and available, with minimal downtime or system failures. This will help ensure that members and 
+   administrators can access the system whenever they need it.
 
-========================================================================================================================================
+6. Accessibility: The system should be accessible to all members, regardless of their abilities or disabilities. This may require implementing features 
+   such as screen readers, color contrast options, and keyboard navigation to accommodate members with different needs.
+
+
+=====================================================================================================================================
+Database Schema
+---------------
+
+Table: Member
+
+  memberId
+  firstName
+  lastName
+  address
+  dateOfBirth
+  contactDetails
+  gender
+  maritalStatus
+  baptismDate
+  baptismLocation
+  pastorName
+  PRIMARY KEY (`memberId`));
+
+
+Table: Church
+
+church_id (Primary Key)
+name
+address
+phone_number
+
+
+Table: Membership
+
+membership_id (Primary Key)
+member_id (Foreign Key referencing Member table)
+church_id (Foreign Key referencing Church table)
+date_joined
+date_left (nullable)
+is_active
+
+
+
+Class Diagram
+-------------
+
+     +------------------+          +-----------------+
+     |     Member       |          |     Church      |
+     +------------------+          +-----------------+
+     | - memberId       |          | - church_id     |
+     | - firstName      |          | - name          |
+     | - lastName       |          | - address       |
+     | - address        |          | - phone_number  |
+     | - dateOfBirth    |          +-----------------+
+     | - contactDetails |
+     | - gender         |
+     | - maritalStatus  |
+     | - baptismDate    |
+     | - baptismLocation|
+     | - pastorName     |
+     +------------------+
+              ^
+              |
+              |
+              |
+              |
+   +---------------------+
+   |      Membership     |
+   +---------------------+
+   | - membership_id     |
+   | - date_joined       |
+   | - date_left         |
+   | - is_active         |
+   +---------------------+
+
+=========================================================================================================================================================
+
+User documentation for the SDA Church membership application:
+-----------------------------------------------------------
+
+SDA Church Membership Application User Documentation
+
+1. Introduction
+The SDA Church Membership Application is designed to manage the membership records of the Seventh-day Adventist (SDA) Church. 
+This user guide provides instructions on how to use the application effectively, including login credentials, navigation, and available features.
+
+2. Login Credentials
+To access the SDA Church Membership Application, you will need valid login credentials provided by your administrator. 
+Please contact your administrator to obtain your username and password.
+
+3. Application Navigation
+Upon successful login, you will be presented with the main dashboard of the application. The dashboard provides an overview of key information and 
+access to various features. The following sections explain the main navigation elements:
+
+-Menu Bar: The top section of the application contains a menu bar with various options. You can use the menu options to navigate to different sections
+ of the application, such as Members, Churches, or Reports.
+
+-Sidebar: The sidebar located on the left side of the application provides quick access to different modules and features. You can expand or collapse 
+ the sidebar as needed.
+
+- Search: The search functionality allows you to search for specific members or churches. Simply enter the relevant keywords or criteria in the search 
+  box and click the search button.
+
+4. Managing Members
+The SDA Church Membership Application provides functionality to manage member records. Here's how you can perform common tasks related to members:
+
+- View Members:Click on the "Members" option in the menu bar to access the member management section. You can view a list of all members, 
+   search for specific members, and view individual member details.
+
+- Add New Member: To add a new member, click on the "Add Member" button and fill in the required information, such as first name, last name, 
+    date of birth, gender, address, phone number, and email.
+
+- Edit Member Details:To edit member details, navigate to the member's profile and click on the "Edit" button. Update the necessary information 
+   and save the changes.
+
+- Manage Memberships: Within the member profile, you can manage the member's church memberships, including joining or leaving dates and 
+   active/inactive status.
+
+5. Managing Churches
+The SDA Church Membership Application allows you to manage church records. Follow these steps to perform common tasks related to churches:
+
+- View Churches: Click on the "Churches" option in the menu bar to access the church management section. You can view a list of all churches, 
+   search for specific churches, and view individual church details.
+
+- Add New Church: To add a new church, click on the "Add Church" button and provide the necessary details, such as church name, address, 
+    and phone number.
+
+- Edit Church Details: Navigate to the church's profile and click on the "Edit" button to update the church details.
+
+6. Generating Reports
+The SDA Church Membership Application offers reporting capabilities to generate various membership-related reports. 
+Here's how you can generate reports:
+
+- Access Reports: Click on the "Reports" option in the menu bar to access the reporting section. You will find a list of available reports.
+
+- Select Report Criteria: Choose the desired report and provide any required criteria, such as date range or membership status.
+
+- Generate Report: Click on the "Generate" button to generate the report. The report will be displayed on the screen or available 
+   for download, depending on the report format.
+
+7. Logging Out
+To log out of the application, click on your username located in the top-right corner of the screen and select the "Logout" option.
+
+Note: Please remember to keep your login credentials secure and do not share them.
+
+
+==============================================================================================================================================
+
+
+SDA Church Membership Application Technical Documentation
+---------------------------------------------------------
+
+1. Architecture Overview
+The SDA Church Membership Application is a web-based application developed using a three-tier architecture. 
+It consists of the following layers:
+
+- Presentation Layer:This layer handles the user interface and interaction with the application. It is responsible for rendering the web pages 
+  and handling user input. The front-end utilizes HTML, CSS, and JavaScript for the user interface.
+
+- Application Layer:The application layer contains the business logic and acts as an intermediary between the presentation layer and the 
+   data layer. It processes user requests, performs necessary computations, and interacts with the database layer.
+
+- Data Layer: The data layer is responsible for storing and retrieving data from the database. It includes a relational database management 
+   system (RDBMS) where the member, church, and membership records are stored.
+
+2. Technology Stack
+The SDA Church Membership Application has been implemented using the following technologies and frameworks:
+
+- Programming Languages: The application is primarily developed using Java for the back-end logic and JavaScript for front-end interactivity.
+
+- Web Framework:A web framework such as Spring MVC or JavaServer Faces (JSF) is utilized for handling web requests, managing controllers, 
+   and facilitating the Model-View-Controller (MVC) pattern.
+
+- Database Management System: A relational database management system (RDBMS) like MySQL, PostgreSQL, or Oracle is used to store and manage 
+   the application's data.
+
+- ORM Framework: An Object-Relational Mapping (ORM) framework, such as Hibernate or JPA (Java Persistence API), is employed to simplify 
+   database interactions and provide object-oriented access to the database entities.
+
+- Web Technologies:HTML, CSS, and JavaScript are used for the user interface development, including the layout, styling, and client-side interactions.
+
+- Version Control: A version control system like Git is employed for source code management and collaboration among developers.
+
+3. Application Components
+The SDA Church Membership Application consists of various components, including:
+
+- Member Management: This component handles the management of member records, including creating new members, editing member details, 
+  and managing their church memberships.
+
+- Church Management: This component deals with the management of church records, enabling the addition of new churches, editing church details, 
+  and tracking relevant information.
+
+- Membership Management:This component facilitates the management of memberships, including tracking the joining and leaving dates of members, 
+  their active/inactive status, and their associated churches.
+
+- Reporting: This component allows users to generate reports based on various criteria, such as membership status, date range, or specific 
+  member/church details.
+
+4. Deployment
+The SDA Church Membership Application can be deployed in a web server environment. The specific steps for deployment depend on the chosen 
+server and technology stack. Typically, the application is packaged into a WAR (Web ARchive) file and deployed on a web server such as Apache 
+Tomcat or Jetty.
+
+5. Integration and APIs
+The SDA Church Membership Application may integrate with other systems or APIs as per project requirements. This could include integration 
+with authentication systems, email services, or third-party APIs for additional functionality.
+
+6. Security Considerations
+To ensure the security of the application and its data, it is important to implement appropriate security measures, such as secure authentication 
+and authorization mechanisms, input validation, and protection against common web vulnerabilities like Cross-Site Scripting (XSS) and SQL Injection.
+
+7. Future Enhancements
+Based on the project's requirements and future plans, potential enhancements to the application could include features like event management, 
+financial contributions tracking, advanced reporting options, and integration with communication platforms for member engagement.
 
 
 
