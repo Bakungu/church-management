@@ -118,32 +118,15 @@ Based on these requirements, here is a basic database schema that you can use as
 | status | ENUM('Pending', 'Approved', 'Rejected') | Status of the transfer request |
 | created_at | DATETIME | Timestamp for when the transfer request was created |
 
-**Table: user**
-
-| Column Name | Data Type | Description |
-| --- | --- | --- |
-| id | INT | Unique ID for each user |
-| username | VARCHAR(50) | User's login username |
-| password | VARCHAR(100) | User's login password (hashed) |
-| role | ENUM('Member', 'Church Admin', 'System Admin') | User's role in the system |
-| member_id | INT | Foreign key to the member table (for members only) |
-
-This is just a basic schema to get you started. You may need to modify or expand it based on your specific requirements. I hope this helps
-
-
-==========================================================================================================================================
-
-
-
 Class Diagram 
 ============
 
-  +------------+     +---------------+     +-------------+
+  -------------     +---------------+      --------------
   |    Member  |     |   LocalChurch |     |    Region   |
-  +------------+     +---------------+     +-------------+
+  -------------       ---------------      --------------
   | id         |     | id            |     | id          |
   | first_name |     | name          |     | name        |
-  | last_name  |     | address       |     +-------------+
+  | last_name  |     | address       |     ---------------
   | email      |     | region_id     |
   | phone      |     +---------------+
   | status     |
@@ -151,6 +134,10 @@ Class Diagram
   +------------+
 
 ========================================================================================================================================
+
+
+
+
 
 
 
